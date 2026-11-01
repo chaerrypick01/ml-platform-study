@@ -1,11 +1,19 @@
-"""Run a reproducible income classification comparison with local MLflow tracking."""
+"""Run a reproducible income classification comparison.
+
+This code is an MLflow client that talks only HTTP to the tracking server
+started by experiments/start_mlflow_server.sh. The server writes metadata to
+its backend store (SQLite) and proxies artifacts to MinIO (S3), so this
+process needs no database path or S3 credentials.
+"""
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
 import time
+import urllib.request
 
 import matplotlib
 matplotlib.use("Agg")
@@ -28,9 +36,21 @@ from sklearn.tree import DecisionTreeClassifier
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUTS = ROOT / "experiments" / "outputs"
-TRACKING_URI = f"sqlite:///{OUTPUTS / 'mlflow.db'}"
+TRACKING_URI = os.environ.get("MLFLOW_TRACKING_URI", "http://127.0.0.1:5001")
 EXPERIMENT_NAME = "assignment-income-classification"
 SEED = 42
+# Keep unrelated shell variable names (e.g. API keys) out of the logged model metadata.
+os.environ.setdefault("MLFLOW_RECORD_ENV_VARS_IN_MODEL_LOGGING", "false")
+
+
+def check_tracking_server():
+    try:
+        urllib.request.urlopen(f"{TRACKING_URI}/health", timeout=5)
+    except OSError as error:
+        raise RuntimeError(
+            f"MLflow tracking server({TRACKING_URI})에 연결할 수 없습니다. "
+            "먼저 실행하세요: experiments/start_mlflow_server.sh"
+        ) from error
 
 
 def evaluate(model, X, y):
@@ -85,11 +105,14 @@ def run_experiment():
     packages = subprocess.check_output([sys.executable, "-m", "pip", "freeze"], text=True)
     (destination / "requirements-lock.txt").write_text(packages)
 
+    check_tracking_server()
     mlflow.set_tracking_uri(TRACKING_URI)
     experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
-    experiment_id = experiment.experiment_id if experiment else mlflow.create_experiment(
-        EXPERIMENT_NAME, artifact_location=(OUTPUTS / "artifacts").as_uri()
-    )
+    # Without an explicit location the server assigns mlflow-artifacts:/..., i.e. it proxies uploads.
+    experiment_id = experiment.experiment_id if experiment else mlflow.create_experiment(EXPERIMENT_NAME)
+    artifact_location = mlflow.get_experiment(experiment_id).artifact_location
+    if not artifact_location.startswith("mlflow-artifacts:"):
+        raise RuntimeError(f"{EXPERIMENT_NAME} bypasses the server proxy: {artifact_location}")
     candidates = {
         "dummy_most_frequent": DummyClassifier(strategy="most_frequent"),
         "decision_tree_depth5": DecisionTreeClassifier(max_depth=5, random_state=SEED),
