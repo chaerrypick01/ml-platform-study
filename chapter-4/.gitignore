@@ -1,2 +1,7 @@
 myvenv
 myvenv2
+venv/
+__pycache__/
+.ipynb_checkpoints/
+experiments/outputs/
+.playwright-mcp/

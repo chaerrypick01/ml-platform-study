@@ -1,0 +1,9 @@
+project: ch4_local_income
+registry: s3://feature-registry/registry.db
+provider: local
+entity_key_serialization_version: 2
+offline_store:
+  type: file
+online_store:
+  type: redis
+  connection_string: "127.0.0.1:16379,password=ch4-local-redis"

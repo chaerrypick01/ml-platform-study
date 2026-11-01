@@ -1,0 +1,28 @@
+name: ch4-feature-lab
+services:
+  minio:
+    image: minio/minio@sha256:14cea493d9a34af32f524e538b8346cf79f3321eff8e708c1e2960462bd8936e
+    command: server /data --console-address :9001
+    environment:
+      MINIO_ROOT_USER: ch4local
+      MINIO_ROOT_PASSWORD: ch4-local-only-password
+    ports:
+      - "127.0.0.1:19000:9000"
+      - "127.0.0.1:19001:9001"
+    volumes:
+      - minio-data:/data
+  redis:
+    image: redis@sha256:ee64a64eaab618d88051c3ade8f6352d11531fcf79d9a4818b9b183d8c1d18ba
+    command: redis-server --appendonly yes --requirepass ch4-local-redis
+    ports:
+      - "127.0.0.1:16379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "ch4-local-redis", "ping"]
+      interval: 2s
+      timeout: 2s
+      retries: 20
+volumes:
+  minio-data:
+  redis-data:
