@@ -2,7 +2,7 @@
 
 > 출처: [1주차 핵심 정리 · MLOps 기초와 Kubernetes 배포](https://app.notion.com/p/1-MLOps-Kubernetes-40048126b0fe8140a110f062f42c4628) (Notion)
 >
-> 다이어그램은 `assets/` 폴더의 HTML 파일입니다. GitHub에서는 렌더링되지 않으니 로컬 브라우저로 열어 보세요.
+> 다이어그램 이미지는 Notion의 HTML 원본(`assets/*.html`)을 캡처한 것입니다.
 
 ## 1. 학습과 추론은 역할이 다르다
 
@@ -29,7 +29,7 @@
 4. **배포 전 검증:** 예측 품질뿐 아니라 지연·비용·보안·실제 사용 조건을 확인한다.
 5. **배포·관찰·개선:** 운영 신호로 원인을 분석하고 다음 후보를 만든다.
 
-📊 다이어그램: [모델의 수명주기](assets/mlops-lifecycle.html)
+![모델의 수명주기](assets/mlops-lifecycle.png)
 
 | 데이터 분할 | 용도 |
 | --- | --- |
@@ -51,7 +51,7 @@
 | 모델 레지스트리 | 모델 버전과 메타데이터를 관리하고 배포할 모델을 식별 | MLflow |
 | 서빙 기반 | 모델을 API·배치 작업으로 실행하고 자원·확장·복구 관리 | 컨테이너·Kubernetes |
 
-📊 다이어그램: [피처 스토어와 모델 레지스트리](assets/mlops-platform-components.html)
+![피처 스토어와 모델 레지스트리](assets/mlops-platform-components.png)
 
 ### 피처 스토어가 해결하려는 두 가지 문제
 
@@ -77,7 +77,7 @@ MLOps에서 익힌 **버전 관리·평가·배포·모니터링·개선**은 LL
 
 예를 들어 모델은 그대로여도 프롬프트를 바꾸거나 검색 문서를 갱신하면 답변이 달라진다. 따라서 모델 버전만 관리하는 것으로는 변경의 영향과 원인을 파악하기 어렵다.
 
-📊 다이어그램: [MLOps의 운영 원칙을 LLM 서비스에 적용하면?](assets/mlops-to-llmops.html)
+![MLOps의 운영 원칙을 LLM 서비스에 적용하면?](assets/mlops-to-llmops.png)
 
 | 관리 대상 | 무엇을 관리하는가 | 필요한 이유 |
 | --- | --- | --- |

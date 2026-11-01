@@ -2,7 +2,7 @@
 
 > 출처: [1주차 핵심 정리 · MLOps 기초와 Kubernetes 배포](https://app.notion.com/p/1-MLOps-Kubernetes-40048126b0fe8140a110f062f42c4628) (Notion)
 >
-> 다이어그램은 `assets/` 폴더의 HTML 파일입니다. GitHub에서는 렌더링되지 않으니 로컬 브라우저로 열어 보세요.
+> 다이어그램 이미지는 Notion의 HTML 원본(`assets/*.html`)을 캡처한 것입니다.
 
 ML 서비스를 실행하는 기반도 일반 애플리케이션과 같은 컨테이너·배포·관측 도구를 활용한다.
 
@@ -21,7 +21,7 @@ ML 서비스를 실행하는 기반도 일반 애플리케이션과 같은 컨�
 
 **Deployment → ReplicaSet → Pod**는 관리 관계이고, **Service → Pod**는 요청 전달 관계다.
 
-📊 다이어그램: [Pod의 관리 관계와 요청 경로](assets/kubernetes-management-routing.html)
+![Pod의 관리 관계와 요청 경로](assets/kubernetes-management-routing.png)
 
 ## 3. CI/CD와 GitOps: 변경을 배포로 연결
 
@@ -29,11 +29,11 @@ ML 서비스를 실행하는 기반도 일반 애플리케이션과 같은 컨�
 - **GitOps:** Git의 선언적 배포 설정을 원하는 운영 상태의 기준으로 삼는다.
 - **Argo CD:** Git과 클러스터 상태의 차이를 확인하고, 수동·자동 동기화로 반영한다.
 
-📊 다이어그램: [CI와 CD의 연결](assets/gitops-delivery.html)
+![CI와 CD의 연결](assets/gitops-delivery.png)
 
 ## 4. 모니터링: 지표 노출·수집·시각화
 
-📊 다이어그램: [지표 노출·수집·시각화 흐름](assets/monitoring-metrics-flow.html)
+![지표 노출·수집·시각화 흐름](assets/monitoring-metrics-flow.png)
 
 요청 수·에러율·응답 시간 등을 관찰해 서비스의 이상을 확인한다.
 
