@@ -1,0 +1,17 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><style>body{font:15px system-ui,sans-serif;color:#17243b;margin:0;padding:20px;background:#f8fafc}h2{font-size:21px}p{line-height:1.7;color:#52637b}svg{width:100%;height:auto}text{font:15px system-ui,sans-serif;fill:#17243b}.head{font-weight:700;font-size:18px}.sub{font-size:13px;fill:#52637b}</style><h2>MLOps의 운영 원칙을 LLM 서비스에 적용하면?</h2><svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="공통 운영 기반 위에 LLM 서비스 관리 대상과 RAG의 선택적 구성요소를 추가한 구조">
+<rect x="20" y="20" width="920" height="190" rx="16" fill="#eaf1ff" stroke="#bdcce4"/>
+<text class="head" x="44" y="55">공통 운영 기반 · MLOps에서도, LLMOps에서도 필요</text>
+<rect x="44" y="80" width="264" height="102" rx="10" fill="white"/><text x="60" y="111">버전·실험 관리</text><text class="sub" x="60" y="139">어떤 변경이 어떤 결과를 냈는가?</text><text class="sub" x="60" y="161">데이터 · 코드 · 모델 · 설정</text>
+<rect x="348" y="80" width="264" height="102" rx="10" fill="white"/><text x="364" y="111">평가·배포·롤백</text><text class="sub" x="364" y="139">배포해도 되는가?</text><text class="sub" x="364" y="161">문제가 생기면 되돌릴 수 있는가?</text>
+<rect x="652" y="80" width="264" height="102" rx="10" fill="white"/><text x="668" y="111">관측·피드백·개선</text><text class="sub" x="668" y="139">운영 품질이 유지되는가?</text><text class="sub" x="668" y="161">품질 · 장애 · 지연 · 비용</text>
+<path d="M480 210V244" stroke="#64748b" stroke-width="2"/><text class="sub" x="498" y="236">관리 대상을 LLM 서비스에 맞게 확장</text>
+<rect x="20" y="250" width="920" height="170" rx="16" fill="#eff8f4" stroke="#badacb"/>
+<text class="head" x="44" y="284">LLM 서비스에서 추가하거나 더 세밀하게 관리하는 대상</text>
+<text x="44" y="320">프롬프트 · 모델/API 버전 · 생성 설정</text><text x="510" y="320">응답 품질 · 근거성 · 안전성 · 가드레일</text>
+<text class="sub" x="44" y="346">요청과 응답을 버전·설정에 연결</text><text class="sub" x="510" y="346">평가 데이터와 기준으로 변경 전후 비교</text>
+<text x="44" y="383">입력 → 검색/도구 → 모델 호출 → 응답 추적</text><text x="510" y="383">토큰 사용량 · 비용 · 응답 지연</text>
+<rect x="20" y="452" width="920" height="140" rx="16" fill="#fff8e9" stroke="#e4c78c" stroke-dasharray="6 5"/>
+<text class="head" x="44" y="488">RAG를 사용하는 경우 · 선택적 추가 구성</text>
+<text x="44" y="528">문서 수집·정제·분할 → 임베딩·색인 → 검색 → 근거를 포함해 응답 생성</text>
+<text class="sub" x="44" y="563">문서·색인 버전, 검색 품질과 최신성도 관리한다. 모든 LLM 서비스에 RAG나 벡터 DB가 필요한 것은 아니다.</text>
+</svg><p>위 그림은 실행 순서가 아닌 운영 범위의 관계다. 자체 모델 학습·서빙 여부와 RAG 사용 여부에 따라 필요한 구성요소는 달라진다.</p></html>
