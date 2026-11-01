@@ -1,0 +1,27 @@
+{
+  "seed": 42,
+  "data_sha256": "2009995a1940d1a503a0ddb1997e63450e71a7fad013bcd7d1823d6e7693b6c4",
+  "rows": 30162,
+  "positive_label": ">50K",
+  "positive_fraction": 0.24892248524633645,
+  "split_sizes": {
+    "train": 18096,
+    "validation": 6033,
+    "test": 6033
+  },
+  "selection_metric": "validation_roc_auc",
+  "python": "3.10.17 (main, Aug  5 2025, 11:24:16) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "batch_id": "20261101T073757015810Z",
+  "selected_model": "random_forest",
+  "test_metrics": {
+    "accuracy": 0.8247969501077408,
+    "roc_auc": 0.8773231365756421,
+    "average_precision": 0.6986656407519755,
+    "precision": 0.7296181630546955,
+    "recall": 0.47070572569906793,
+    "f1": 0.5722379603399433
+  },
+  "final_run_id": "227f898f9549469bbbb8a6136d5b9c6b",
+  "model_uri": "models:/m-ca51f8c9ef8541adba6bcfe3eefceee7",
+  "reload_predictions_match": true
+}
