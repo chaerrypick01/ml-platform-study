@@ -1,17 +1,25 @@
 # Design a Machine Learning System (From Scratch) Chapter 4
 ## Getting Started
 
-Setup a virtual envrionment by running
+Setup a virtual environment named `venv` (Python 3.10.17, pinned in `.tool-versions`) by running
 
 ```
-python3.10 -m venv myvenv
-source myvenv/bin/activate
+python3.10 -m venv venv
+source venv/bin/activate
 ```
 
 Install all the requirements by running
 ```
 pip install -r requirements.txt
 ```
+
+To use the notebooks in VS Code/Jupyter, register the environment as a kernel and select **Python (chapter-4 venv)**
+```
+venv/bin/pip install ipykernel
+venv/bin/python -m ipykernel install --user --name chapter4-venv --display-name "Python (chapter-4 venv)"
+```
+
+For the local (Docker Compose) MLflow·Feast·MinIO·Redis exercises and their architecture diagram, see [experiments/README.md](experiments/README.md#architecture) and [experiments/feature_store/README.md](experiments/feature_store/README.md).
 ### Mlflow
 
 Deploy MLFlow and MinIO(part of Kubeflow) by following instructions in the appendix. At the time of writing this book we are using mlflow version 2.6.0
