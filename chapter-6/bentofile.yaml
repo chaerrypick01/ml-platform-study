@@ -1,0 +1,10 @@
+service: "service:IncomeService"
+include:
+  - "service.py"
+  - "model_tag.txt"
+  - "sample_request.json"
+python:
+  requirements_txt: requirements-serving.lock.txt
+  lock_packages: false
+docker:
+  python_version: "3.10"

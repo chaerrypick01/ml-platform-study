@@ -1,0 +1,6 @@
+.venv/
+.venv-drift/
+__pycache__/
+dist/
+outputs/
+.cache/

@@ -1,0 +1,12 @@
+{
+  "features": {
+    "Workclass": "State-gov",
+    "Education": "Bachelors",
+    "Marital-Status": "Never-married",
+    "Occupation": "Adm-clerical",
+    "Relationship": "Not-in-family",
+    "Race": "White",
+    "Sex": "Male",
+    "Native_country": "United-States"
+  }
+}
