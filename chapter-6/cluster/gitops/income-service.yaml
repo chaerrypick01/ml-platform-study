@@ -17,28 +17,30 @@ spec:
     maxReplicas: 1
     enableServiceLinks: false
     containers:
-      - name: kserve-container
-        image: localhost:5002/ch6-income@sha256:4e2fd6898bb43769d5645f127d7cfeb4af374ec902273268366774fd3c0b1135
-        imagePullPolicy: Always
-        ports:
-          - name: http1
-            containerPort: 3000
-        env:
-          - name: CH6_RELEASE
-            value: "gitops-v2"
-          - name: BENTOML_DO_NOT_TRACK
-            value: "True"
-        resources:
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: "1"
-            memory: 768Mi
-        readinessProbe:
-          httpGet:
-            path: /readyz
-            port: 3000
-          initialDelaySeconds: 5
-          periodSeconds: 5
-          timeoutSeconds: 3
+    - name: kserve-container
+      image: localhost:5002/ch6-income@sha256:4ef70b2eeb0ddfa8a27a8785709f614e13315d05774a0047567940da762b0927
+      imagePullPolicy: Always
+      ports:
+      - name: http1
+        containerPort: 3000
+      env:
+      - name: CH6_RELEASE
+        value: ci-40730fdda9d6-20261107201052
+      - name: BENTOML_DO_NOT_TRACK
+        value: 'True'
+      - name: CH6_LOG_STDOUT
+        value: '1'
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: '1'
+          memory: 768Mi
+      readinessProbe:
+        httpGet:
+          path: /readyz
+          port: 3000
+        initialDelaySeconds: 5
+        periodSeconds: 5
+        timeoutSeconds: 3

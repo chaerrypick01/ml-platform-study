@@ -1,6 +1,7 @@
 service: "service:IncomeService"
 include:
   - "service.py"
+  - "request_log.py"
   - "model_tag.txt"
   - "sample_request.json"
 python:

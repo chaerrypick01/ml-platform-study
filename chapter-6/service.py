@@ -2,13 +2,12 @@
 
 from pathlib import Path
 from datetime import datetime, timezone
-import json
 import os
-import threading
 
 import bentoml
 import pandas as pd
 from pydantic import BaseModel, ConfigDict, Field
+from request_log import RequestLog
 
 
 class IncomeFeatures(BaseModel):
@@ -33,11 +32,10 @@ class IncomeService:
     def __init__(self):
         # BentoModel declares the model dependency for the build.
         self.model = bentoml.sklearn.load_model(self.model_ref)
+        self.model_uri = bentoml.sklearn.get(self.model_ref.tag).info.metadata.get("mlflow_model_uri")
         log_path = os.environ.get("CH6_REQUEST_LOG")
-        self.request_log = Path(log_path) if log_path else None
-        self.log_lock = threading.Lock()
-        if self.request_log:
-            self.request_log.parent.mkdir(parents=True, exist_ok=True)
+        stdout = os.environ.get("CH6_LOG_STDOUT") == "1"
+        self.request_log = RequestLog(log_path, stdout) if log_path or stdout else None
 
     @bentoml.api
     def predict(self, features: IncomeFeatures) -> dict:
@@ -48,11 +46,12 @@ class IncomeService:
             record = {
                 "timestamp": datetime.now(timezone.utc).isoformat(),
                 "model_tag": str(self.model_ref.tag),
+                "model_uri": self.model_uri,
+                "release": os.environ.get("CH6_RELEASE", "local"),
                 "features": features.model_dump(by_alias=True),
                 "prediction": prediction,
             }
-            with self.log_lock, self.request_log.open("a") as stream:
-                stream.write(json.dumps(record) + "\n")
+            self.request_log.submit(record)
         return {
             "prediction": prediction,
             "income_category": ">50K" if prediction == 1 else "<=50K",
