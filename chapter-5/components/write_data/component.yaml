@@ -1,0 +1,25 @@
+name: write-data
+inputs:
+- name: minio_endpoint
+  type: String
+- name: bucket
+  type: String
+- name: key
+  type: String
+- name: input_data
+  type: Dataset
+implementation:
+  container:
+    image: chapter5-inference:lab-v1
+    command:
+    - python
+    - /app/src/component.py
+    - write
+    - --minio-endpoint
+    - inputValue: minio_endpoint
+    - --bucket
+    - inputValue: bucket
+    - --key
+    - inputValue: key
+    - --input
+    - inputPath: input_data

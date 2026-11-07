@@ -1,0 +1,290 @@
+# PIPELINE DEFINITION
+# Name: chapter5-income-classifier
+# Inputs:
+#    feature_config_bucket: str
+#    feature_config_key: str
+#    features: str
+#    input_bucket: str
+#    input_key: str
+#    minio_endpoint: str
+#    mlflow_endpoint: str
+#    model_uri: str
+#    output_bucket: str
+#    output_key: str
+components:
+  comp-read-data:
+    executorLabel: exec-read-data
+    inputDefinitions:
+      parameters:
+        bucket:
+          parameterType: STRING
+        key:
+          parameterType: STRING
+        minio_endpoint:
+          parameterType: STRING
+    outputDefinitions:
+      artifacts:
+        data_output:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+  comp-retrieve-features:
+    executorLabel: exec-retrieve-features
+    inputDefinitions:
+      artifacts:
+        input_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+      parameters:
+        bucket:
+          parameterType: STRING
+        features:
+          parameterType: STRING
+        key:
+          parameterType: STRING
+        minio_endpoint:
+          parameterType: STRING
+    outputDefinitions:
+      artifacts:
+        data_output:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+  comp-run-inference:
+    executorLabel: exec-run-inference
+    inputDefinitions:
+      artifacts:
+        input_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+      parameters:
+        mlflow_endpoint:
+          parameterType: STRING
+        model_uri:
+          parameterType: STRING
+    outputDefinitions:
+      artifacts:
+        data_output:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+  comp-write-data:
+    executorLabel: exec-write-data
+    inputDefinitions:
+      artifacts:
+        input_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+      parameters:
+        bucket:
+          parameterType: STRING
+        key:
+          parameterType: STRING
+        minio_endpoint:
+          parameterType: STRING
+deploymentSpec:
+  executors:
+    exec-read-data:
+      container:
+        command:
+        - python
+        - /app/src/component.py
+        - read
+        - --minio-endpoint
+        - '{{$.inputs.parameters[''minio_endpoint'']}}'
+        - --bucket
+        - '{{$.inputs.parameters[''bucket'']}}'
+        - --key
+        - '{{$.inputs.parameters[''key'']}}'
+        - --output
+        - '{{$.outputs.artifacts[''data_output''].path}}'
+        env:
+        - name: AWS_ACCESS_KEY_ID
+          value: ch4local
+        - name: AWS_SECRET_ACCESS_KEY
+          value: ch4-local-only-password
+        image: chapter5-inference:lab-v1
+        resources:
+          cpuRequest: 0.25
+          memoryLimit: 2.147483648
+          memoryRequest: 0.536870912
+    exec-retrieve-features:
+      container:
+        command:
+        - python
+        - /app/src/component.py
+        - retrieve
+        - --minio-endpoint
+        - '{{$.inputs.parameters[''minio_endpoint'']}}'
+        - --bucket
+        - '{{$.inputs.parameters[''bucket'']}}'
+        - --key
+        - '{{$.inputs.parameters[''key'']}}'
+        - --features
+        - '{{$.inputs.parameters[''features'']}}'
+        - --input
+        - '{{$.inputs.artifacts[''input_data''].path}}'
+        - --output
+        - '{{$.outputs.artifacts[''data_output''].path}}'
+        env:
+        - name: AWS_ACCESS_KEY_ID
+          value: ch4local
+        - name: AWS_SECRET_ACCESS_KEY
+          value: ch4-local-only-password
+        image: chapter5-inference:lab-v1
+        resources:
+          cpuRequest: 0.25
+          memoryLimit: 2.147483648
+          memoryRequest: 0.536870912
+    exec-run-inference:
+      container:
+        command:
+        - python
+        - /app/src/component.py
+        - predict
+        - --mlflow-endpoint
+        - '{{$.inputs.parameters[''mlflow_endpoint'']}}'
+        - --model-uri
+        - '{{$.inputs.parameters[''model_uri'']}}'
+        - --input
+        - '{{$.inputs.artifacts[''input_data''].path}}'
+        - --output
+        - '{{$.outputs.artifacts[''data_output''].path}}'
+        image: chapter5-inference:lab-v1
+        resources:
+          cpuRequest: 0.25
+          memoryLimit: 2.147483648
+          memoryRequest: 0.536870912
+    exec-write-data:
+      container:
+        command:
+        - python
+        - /app/src/component.py
+        - write
+        - --minio-endpoint
+        - '{{$.inputs.parameters[''minio_endpoint'']}}'
+        - --bucket
+        - '{{$.inputs.parameters[''bucket'']}}'
+        - --key
+        - '{{$.inputs.parameters[''key'']}}'
+        - --input
+        - '{{$.inputs.artifacts[''input_data''].path}}'
+        env:
+        - name: AWS_ACCESS_KEY_ID
+          value: ch4local
+        - name: AWS_SECRET_ACCESS_KEY
+          value: ch4-local-only-password
+        image: chapter5-inference:lab-v1
+        resources:
+          cpuRequest: 0.25
+          memoryLimit: 2.147483648
+          memoryRequest: 0.536870912
+pipelineInfo:
+  name: chapter5-income-classifier
+root:
+  dag:
+    tasks:
+      read-data:
+        cachingOptions: {}
+        componentRef:
+          name: comp-read-data
+        inputs:
+          parameters:
+            bucket:
+              componentInputParameter: input_bucket
+            key:
+              componentInputParameter: input_key
+            minio_endpoint:
+              componentInputParameter: minio_endpoint
+        taskInfo:
+          name: read-data
+      retrieve-features:
+        cachingOptions: {}
+        componentRef:
+          name: comp-retrieve-features
+        dependentTasks:
+        - read-data
+        inputs:
+          artifacts:
+            input_data:
+              taskOutputArtifact:
+                outputArtifactKey: data_output
+                producerTask: read-data
+          parameters:
+            bucket:
+              componentInputParameter: feature_config_bucket
+            features:
+              componentInputParameter: features
+            key:
+              componentInputParameter: feature_config_key
+            minio_endpoint:
+              componentInputParameter: minio_endpoint
+        taskInfo:
+          name: retrieve-features
+      run-inference:
+        cachingOptions: {}
+        componentRef:
+          name: comp-run-inference
+        dependentTasks:
+        - retrieve-features
+        inputs:
+          artifacts:
+            input_data:
+              taskOutputArtifact:
+                outputArtifactKey: data_output
+                producerTask: retrieve-features
+          parameters:
+            mlflow_endpoint:
+              componentInputParameter: mlflow_endpoint
+            model_uri:
+              componentInputParameter: model_uri
+        taskInfo:
+          name: run-inference
+      write-data:
+        cachingOptions: {}
+        componentRef:
+          name: comp-write-data
+        dependentTasks:
+        - run-inference
+        inputs:
+          artifacts:
+            input_data:
+              taskOutputArtifact:
+                outputArtifactKey: data_output
+                producerTask: run-inference
+          parameters:
+            bucket:
+              componentInputParameter: output_bucket
+            key:
+              componentInputParameter: output_key
+            minio_endpoint:
+              componentInputParameter: minio_endpoint
+        taskInfo:
+          name: write-data
+  inputDefinitions:
+    parameters:
+      feature_config_bucket:
+        parameterType: STRING
+      feature_config_key:
+        parameterType: STRING
+      features:
+        parameterType: STRING
+      input_bucket:
+        parameterType: STRING
+      input_key:
+        parameterType: STRING
+      minio_endpoint:
+        parameterType: STRING
+      mlflow_endpoint:
+        parameterType: STRING
+      model_uri:
+        parameterType: STRING
+      output_bucket:
+        parameterType: STRING
+      output_key:
+        parameterType: STRING
+schemaVersion: 2.1.0
+sdkVersion: kfp-2.9.0

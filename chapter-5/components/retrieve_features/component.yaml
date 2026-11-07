@@ -1,0 +1,34 @@
+name: retrieve-features
+inputs:
+- name: minio_endpoint
+  type: String
+- name: bucket
+  type: String
+- name: key
+  type: String
+- name: features
+  type: String
+- name: input_data
+  type: Dataset
+outputs:
+- name: data_output
+  type: Dataset
+implementation:
+  container:
+    image: chapter5-inference:lab-v1
+    command:
+    - python
+    - /app/src/component.py
+    - retrieve
+    - --minio-endpoint
+    - inputValue: minio_endpoint
+    - --bucket
+    - inputValue: bucket
+    - --key
+    - inputValue: key
+    - --features
+    - inputValue: features
+    - --input
+    - inputPath: input_data
+    - --output
+    - outputPath: data_output

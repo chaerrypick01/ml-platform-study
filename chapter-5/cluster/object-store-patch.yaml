@@ -1,0 +1,19 @@
+# Same compatibility patch as johklo/ml-platform-book-env.
+spec:
+  template:
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: minio
+          image: chrislusf/seaweedfs:3.85
+          command: ["/bin/sh", "-ec"]
+          args:
+            - |
+              umask 077
+              printf '{"identities":[{"name":"pipeline","credentials":[{"accessKey":"%s","secretKey":"%s"}],"actions":["Admin","Read","Write","List","Tagging"]}]}' \
+                "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY" > /tmp/s3.json
+              exec /usr/bin/weed server -dir=/data -s3 -s3.port=9000 \
+                -s3.config=/tmp/s3.json -ip=127.0.0.1 -ip.bind=0.0.0.0 \
+                -volume.max=100 -master.volumeSizeLimitMB=64 \
+                -master.volumePreallocate=false -master.defaultReplication=000

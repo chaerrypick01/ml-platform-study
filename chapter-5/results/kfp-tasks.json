@@ -1,0 +1,30 @@
+{
+  "workflow": "chapter5-income-classifier-kj969",
+  "state": "Succeeded",
+  "tasks": [
+    {
+      "displayName": "read-data",
+      "phase": "Succeeded",
+      "startedAt": "2026-11-07T07:17:19Z",
+      "finishedAt": "2026-11-07T07:19:47Z"
+    },
+    {
+      "displayName": "retrieve-features",
+      "phase": "Succeeded",
+      "startedAt": "2026-11-07T07:19:57Z",
+      "finishedAt": "2026-11-07T07:20:07Z"
+    },
+    {
+      "displayName": "run-inference",
+      "phase": "Succeeded",
+      "startedAt": "2026-11-07T07:20:17Z",
+      "finishedAt": "2026-11-07T07:20:38Z"
+    },
+    {
+      "displayName": "write-data",
+      "phase": "Succeeded",
+      "startedAt": "2026-11-07T07:20:48Z",
+      "finishedAt": "2026-11-07T07:20:58Z"
+    }
+  ]
+}

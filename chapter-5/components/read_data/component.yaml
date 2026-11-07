@@ -1,0 +1,26 @@
+name: read-data
+inputs:
+- name: minio_endpoint
+  type: String
+- name: bucket
+  type: String
+- name: key
+  type: String
+outputs:
+- name: data_output
+  type: Dataset
+implementation:
+  container:
+    image: chapter5-inference:lab-v1
+    command:
+    - python
+    - /app/src/component.py
+    - read
+    - --minio-endpoint
+    - inputValue: minio_endpoint
+    - --bucket
+    - inputValue: bucket
+    - --key
+    - inputValue: key
+    - --output
+    - outputPath: data_output

@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: chapter5-register-features
+  namespace: kubeflow
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: register
+          image: chapter5-inference:lab-v1
+          imagePullPolicy: Never
+          command: [python, /app/src/register_features.py]
+          args: [--minio-endpoint, "http://host.docker.internal:19000"]
+          env:
+            - name: AWS_ACCESS_KEY_ID
+              value: ch4local
+            - name: AWS_SECRET_ACCESS_KEY
+              value: ch4-local-only-password
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 1Gi

@@ -1,0 +1,16 @@
+{
+  "runner": "KFP 2.4.1 on kind",
+  "kfp_run_id": "09a4c600-5a3d-44ef-8e3e-91b7dd83f8f3",
+  "state": "SUCCEEDED",
+  "rows": 100,
+  "model_uri": "models:/m-ca51f8c9ef8541adba6bcfe3eefceee7",
+  "user_ids_and_timestamps_match": true,
+  "predicted_labels_match": true,
+  "probability_max_absolute_difference": 1.1102230246251565e-16,
+  "probability_absolute_tolerance": 1e-12,
+  "label_counts": {
+    "<=50K": 78,
+    ">50K": 22
+  },
+  "output_uri": "s3://chapter5-batch/kfp-20261107/predictions.parquet"
+}

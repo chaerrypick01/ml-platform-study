@@ -1,0 +1,2 @@
+# Separate compiler environment; do not modify chapter 4's venv.
+kfp==2.9.0

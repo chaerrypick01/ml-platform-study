@@ -1,0 +1,26 @@
+name: run-inference
+inputs:
+- name: mlflow_endpoint
+  type: String
+- name: model_uri
+  type: String
+- name: input_data
+  type: Dataset
+outputs:
+- name: data_output
+  type: Dataset
+implementation:
+  container:
+    image: chapter5-inference:lab-v1
+    command:
+    - python
+    - /app/src/component.py
+    - predict
+    - --mlflow-endpoint
+    - inputValue: mlflow_endpoint
+    - --model-uri
+    - inputValue: model_uri
+    - --input
+    - inputPath: input_data
+    - --output
+    - outputPath: data_output

@@ -1,0 +1,21 @@
+{
+  "batch_id": "20261105T043750924837Z",
+  "rows": 100,
+  "model_uri": "models:/m-ca51f8c9ef8541adba6bcfe3eefceee7",
+  "tracking_uri": "http://127.0.0.1:5001",
+  "csv_sha256": "2009995a1940d1a503a0ddb1997e63450e71a7fad013bcd7d1823d6e7693b6c4",
+  "all_source_rows_match_csv": true,
+  "event_timestamp": "2023-09-16T13:47:28+00:00",
+  "input_key": "20261105T043750924837Z/input.parquet",
+  "output_key": "20261105T043750924837Z/predictions.parquet",
+  "source_features_match": true,
+  "direct_predictions_match": true,
+  "probability_absolute_tolerance": 1e-12,
+  "probability_max_absolute_difference": 1.1102230246251565e-16,
+  "output_round_trip_match": true,
+  "output_uri": "s3://chapter5-batch/20261105T043750924837Z/predictions.parquet",
+  "label_counts": {
+    "<=50K": 78,
+    ">50K": 22
+  }
+}

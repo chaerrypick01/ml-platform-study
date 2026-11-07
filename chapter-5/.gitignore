@@ -1,0 +1,6 @@
+outputs/
+.venv/
+.kube/
+.cache/
+__pycache__/
+.ipynb_checkpoints/
