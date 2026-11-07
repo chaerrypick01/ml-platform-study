@@ -25,7 +25,7 @@ spec:
             containerPort: 3000
         env:
           - name: CH6_RELEASE
-            value: "gitops-v1"
+            value: "gitops-v2"
           - name: BENTOML_DO_NOT_TRACK
             value: "True"
         resources:
