@@ -17,15 +17,15 @@ UI에서 각 노드를 클릭해 로그를 따라가면 입력 100행, Feast 피
 
 **파이프라인 DAG:** 네 컴포넌트의 성공 상태와 단계 사이 Dataset 전달 경로.
 
-![KFP 네 단계 모두 성공한 파이프라인 DAG](../output/playwright/chapter-5/kfp-run-graph.png)
+![KFP 네 단계 모두 성공한 파이프라인 DAG](results/screenshots/kfp-run-graph.png)
 
 **Run 상세:** `Succeeded`, 실행 시간 7분 7초(최초 이미지 다운로드 포함), 모델 URI와 입출력 경로.
 
-![KFP Run 성공 상태와 실행 파라미터](../output/playwright/chapter-5/kfp-run-detail.png)
+![KFP Run 성공 상태와 실행 파라미터](results/screenshots/kfp-run-detail.png)
 
 **추론 로그:** `Predicted 100 rows using models:/m-ca51f8c9ef8541adba6bcfe3eefceee7`과 artifact 저장 성공.
 
-![KFP 모델 추론 100행 실행 로그](../output/playwright/chapter-5/kfp-inference-logs.png)
+![KFP 모델 추론 100행 실행 로그](results/screenshots/kfp-inference-logs.png)
 
 ## chapter-4와 연결
 
