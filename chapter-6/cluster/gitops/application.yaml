@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: ch6-lab
+  namespace: argocd
+spec:
+  sourceRepos:
+    - REPO_URL
+  destinations:
+    - namespace: ch6-serving
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
+  namespaceResourceWhitelist:
+    - group: serving.kserve.io
+      kind: InferenceService
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ch6-income
+  namespace: argocd
+spec:
+  project: ch6-lab
+  source:
+    repoURL: REPO_URL
+    targetRevision: main
+    path: .
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ch6-serving
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
