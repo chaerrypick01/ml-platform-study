@@ -1,0 +1,9 @@
+**
+!chapter-8/
+!chapter-8/requirements.txt
+!chapter-7/
+!chapter-7/lab_data.py
+!chapter-7/coco_names.yaml
+!chapter-8/train.py
+!chapter-8/.cache/
+!chapter-8/.cache/yolov8n.pt

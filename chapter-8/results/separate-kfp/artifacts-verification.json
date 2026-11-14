@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-11-14T16:16:53.192092+00:00",
+  "run_id": "3aa34a9d-e6de-463d-a950-ec62581a9622",
+  "mode": "artifacts",
+  "parameters": {
+    "epochs": 1
+  },
+  "endpoint": "http://127.0.0.1:8080",
+  "state": "SUCCEEDED",
+  "tasks": {
+    "fit-model": "SUCCEEDED",
+    "prepare-data": "SUCCEEDED",
+    "score-model": "SUCCEEDED"
+  },
+  "expected_tasks_succeeded": true,
+  "actual_pod_images": [
+    "localhost:5002/ch8-lab@sha256:917e9f443998f44271cbcb288c209077cf5a624587d985bbd46f15f2126abf37"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "environment": "chapter-7/.venv",
+  "pip_check": "passed",
+  "coco_manifest_matches_previous": true,
+  "torch_installed": false,
+  "container_qa": "passed",
+  "image": "localhost:5002/ch7-data:v1"
+}

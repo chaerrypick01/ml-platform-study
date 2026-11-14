@@ -1,0 +1,67 @@
+{
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "torch_version": "2.8.0",
+  "torch_cpu_threads": 8,
+  "mps_available": true,
+  "comparison": {
+    "baseline": {
+      "metrics/precision(B)": 0.6481915038837164,
+      "metrics/recall(B)": 0.614093232180012,
+      "metrics/mAP50(B)": 0.7077477029276974,
+      "metrics/mAP50-95(B)": 0.5825239394909233,
+      "fitness": 0.5825239394909233
+    },
+    "1": {
+      "metrics/precision(B)": 0.6427596154295169,
+      "metrics/recall(B)": 0.6186439023703919,
+      "metrics/mAP50(B)": 0.7020798890384614,
+      "metrics/mAP50-95(B)": 0.5803871567487858,
+      "fitness": 0.5803871567487858
+    },
+    "5": {
+      "metrics/precision(B)": 0.6635269235356269,
+      "metrics/recall(B)": 0.6295437035178705,
+      "metrics/mAP50(B)": 0.6854960342771801,
+      "metrics/mAP50-95(B)": 0.5669756816939944,
+      "fitness": 0.5669756816939944
+    },
+    "10": {
+      "metrics/precision(B)": 0.6864182054067808,
+      "metrics/recall(B)": 0.5854711216025298,
+      "metrics/mAP50(B)": 0.6714362313399799,
+      "metrics/mAP50-95(B)": 0.5554075101230667,
+      "fitness": 0.5554075101230667
+    }
+  },
+  "selected_by_validation": "baseline",
+  "selected_test_metrics": {
+    "metrics/precision(B)": 0.8954898122338085,
+    "metrics/recall(B)": 0.45738928179695293,
+    "metrics/mAP50(B)": 0.6818445653120411,
+    "metrics/mAP50-95(B)": 0.5158924623233906,
+    "fitness": 0.5158924623233906
+  },
+  "trajectory_mlflow_run_id": "f746f6b4109d4fb9a4fe3597941a7d48",
+  "benchmark": {
+    "cpu": {
+      "wall_seconds": 14.800672249868512,
+      "train_epoch_seconds": [
+        3.5791185828857124,
+        3.8559038750827312,
+        3.8328355830162764
+      ],
+      "median_after_first_seconds": 3.844369729049504
+    },
+    "mps": {
+      "wall_seconds": 18.627722583943978,
+      "train_epoch_seconds": [
+        4.428117833100259,
+        2.932154792128131,
+        3.0235349170397967
+      ],
+      "median_after_first_seconds": 2.9778448545839638
+    }
+  },
+  "benchmark_source": "chapter-8/outputs/benchmark-20261115/summary.json",
+  "benchmark_note": "Separate 3-epoch CPU/MPS runs; thread count is not asserted by this report."
+}

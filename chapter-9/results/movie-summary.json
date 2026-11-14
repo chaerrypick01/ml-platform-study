@@ -1,0 +1,56 @@
+{
+  "mlflow_run_id": "137b201d8c9f47c9b2460f3f1b0d4ee6",
+  "source_url": "https://files.grouplens.org/datasets/movielens/ml-latest-small.zip",
+  "archive_sha256": "696d65a3dfceac7c45750ad32df2c259311949efec81f0f144fdfb91ebc9e436",
+  "sample_size": 6400,
+  "train_rows": 5120,
+  "val_rows": 465,
+  "test_rows": 454,
+  "excluded_unseen_val": 175,
+  "excluded_unseen_test": 186,
+  "best_val_rmse": 0.9746392369270325,
+  "test_rmse": 0.9433276057243347,
+  "test_mean_baseline_rmse": 1.009034276008606,
+  "history": [
+    {
+      "train_rmse": 0.9909688234329224,
+      "val_rmse": 1.0168545246124268
+    },
+    {
+      "train_rmse": 0.8720958232879639,
+      "val_rmse": 0.9902889132499695
+    },
+    {
+      "train_rmse": 0.6774207949638367,
+      "val_rmse": 0.9746392369270325
+    },
+    {
+      "train_rmse": 0.4651108384132385,
+      "val_rmse": 0.9748486280441284
+    },
+    {
+      "train_rmse": 0.3065550923347473,
+      "val_rmse": 0.984112024307251
+    },
+    {
+      "train_rmse": 0.20923687517642975,
+      "val_rmse": 0.9907213449478149
+    },
+    {
+      "train_rmse": 0.14968112111091614,
+      "val_rmse": 0.9926896691322327
+    },
+    {
+      "train_rmse": 0.1159292459487915,
+      "val_rmse": 0.9910077452659607
+    },
+    {
+      "train_rmse": 0.09738097339868546,
+      "val_rmse": 0.9947969317436218
+    },
+    {
+      "train_rmse": 0.086054727435112,
+      "val_rmse": 0.9939999580383301
+    }
+  ]
+}

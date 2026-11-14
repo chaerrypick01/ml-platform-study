@@ -1,0 +1,14 @@
+# PVC/MLflow/TensorBoard lab; YOLO is used by the PVC training workload.
+ultralytics==8.4.212
+torch==2.8.0
+torchvision==0.23.0
+numpy==1.26.4
+opencv-python==4.11.0.86
+tensorboard==2.20.0
+mlflow==3.0.0
+kfp==2.9.0
+kfp-kubernetes==1.3.0
+pandas==2.3.3
+pyarrow==20.0.0
+PyYAML==6.0.3
+matplotlib==3.11.2

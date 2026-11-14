@@ -1,0 +1,15 @@
+{
+  "mlflow_run_id": "2ef39872351144a891bd0fd70d491347",
+  "source_url": "https://files.grouplens.org/datasets/movielens/ml-latest-small.zip",
+  "archive_sha256": "696d65a3dfceac7c45750ad32df2c259311949efec81f0f144fdfb91ebc9e436",
+  "sample_size": 6400,
+  "train_rows": 5120,
+  "val_rows": 465,
+  "test_rows": 454,
+  "excluded_unseen_val": 175,
+  "excluded_unseen_test": 186,
+  "best_val_rmse": 0.9746392369270325,
+  "test_rmse": 0.9433276057243347,
+  "test_mean_baseline_rmse": 1.009034276008606,
+  "mlflow_status": "FINISHED"
+}

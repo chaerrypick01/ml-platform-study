@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chapter9-notebook
+  namespace: kubeflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chapter9-notebook
+  template:
+    metadata:
+      labels:
+        app: chapter9-notebook
+    spec:
+      containers:
+        - name: notebook
+          image: localhost:5002/ch789-notebook:v1
+          command: [jupyter, lab, --allow-root, --ip=0.0.0.0, --port=8888, --no-browser, --ServerApp.root_dir=/shared]
+          ports:
+            - containerPort: 8888
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 100m
+            limits:
+              memory: 1Gi
+              cpu: '1'
+          volumeMounts:
+            - name: data
+              mountPath: /shared
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: chapter9-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chapter9-notebook
+  namespace: kubeflow
+spec:
+  selector:
+    app: chapter9-notebook
+  ports:
+    - port: 8888
+      targetPort: 8888

@@ -1,0 +1,11 @@
+{
+  "environment": "chapter-9/.venv",
+  "pip_check": "passed",
+  "pipeline_compile": "passed",
+  "movie_training_epochs": 1,
+  "mlflow_run_id": "a8b398b1fb614a3f9c945ba20978b7f0",
+  "test_rmse": 0.9822772145271301,
+  "new_container_build": "passed",
+  "new_kfp_submission": "passed",
+  "image": "localhost:5002/ch9-lab@sha256:4bfa24b28233e8ed2546e2fa4c2d500426c85592b342b2476e657317283b712e"
+}

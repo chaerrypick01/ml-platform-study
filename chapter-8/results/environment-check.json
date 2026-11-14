@@ -1,0 +1,10 @@
+{
+  "environment": "chapter-8/.venv",
+  "pip_check": "passed",
+  "pipeline_compile": "passed",
+  "training_epochs": 1,
+  "model_result": "outputs/separate-env-smoke/result.json",
+  "new_container_build": "passed",
+  "new_kfp_submission": "passed",
+  "image": "localhost:5002/ch8-lab@sha256:917e9f443998f44271cbcb288c209077cf5a624587d985bbd46f15f2126abf37"
+}

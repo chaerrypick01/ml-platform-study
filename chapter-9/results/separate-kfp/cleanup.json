@@ -1,0 +1,14 @@
+{
+  "pvc": "ch9-lifecycle-20261114161445",
+  "volume": "pvc-77e32cd6-29ea-4844-aaa3-611e3071f757",
+  "state_before": "Bound",
+  "deletion_timestamp": "2026-11-14T16:16:08Z",
+  "finalizers": [
+    "kubernetes.io/pvc-protection"
+  ],
+  "completed_reference_pods": [
+    "chapter-9-pvc-lifecycle-bmv56-system-container-impl-3207565395",
+    "chapter-9-pvc-lifecycle-bmv56-system-container-impl-4074879752"
+  ],
+  "pvc_and_pv_deleted": true
+}

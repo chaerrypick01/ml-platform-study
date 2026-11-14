@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-11-14T16:16:53.632067+00:00",
+  "run_id": "717d4b87-0e3e-46b3-8288-d531102e723e",
+  "mode": "movie",
+  "parameters": {},
+  "endpoint": "http://127.0.0.1:8080",
+  "state": "SUCCEEDED",
+  "tasks": {
+    "train-recommender": "SUCCEEDED"
+  },
+  "expected_tasks_succeeded": true,
+  "actual_pod_images": [
+    "localhost:5002/ch9-lab@sha256:4bfa24b28233e8ed2546e2fa4c2d500426c85592b342b2476e657317283b712e"
+  ]
+}

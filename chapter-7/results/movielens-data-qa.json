@@ -1,0 +1,21 @@
+{
+  "counts": {
+    "train": 5120,
+    "val": 640,
+    "test": 640
+  },
+  "pair_overlap": 0,
+  "unseen_user_or_movie_rows": {
+    "val": 175,
+    "test": 186
+  },
+  "manifest": {
+    "source_url": "https://files.grouplens.org/datasets/movielens/ml-latest-small.zip",
+    "source_rows": 100836,
+    "seed": 42,
+    "archive_sha256": "696d65a3dfceac7c45750ad32df2c259311949efec81f0f144fdfb91ebc9e436",
+    "sample_rows": 6400,
+    "split": "random rows, 80/10/10"
+  },
+  "note": "QA retains cold-start rows; no model training or temporal evaluation."
+}

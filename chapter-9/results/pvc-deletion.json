@@ -1,0 +1,13 @@
+{
+  "pvc": "ch9-lifecycle-20261114150934",
+  "deletion_timestamp": "2026-11-14T15:11:08Z",
+  "finalizers": [
+    "kubernetes.io/pvc-protection"
+  ],
+  "completed_referencing_pods": [
+    "chapter-9-pvc-lifecycle-rhvbb-system-container-impl-3256764033",
+    "chapter-9-pvc-lifecycle-rhvbb-system-container-impl-648212886"
+  ],
+  "pvc_absent_after_cleanup": true,
+  "pv_absent_after_cleanup": true
+}

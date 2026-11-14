@@ -1,0 +1,4 @@
+PyYAML==6.0.3
+pandas==2.3.3
+pyarrow==20.0.0
+kfp==2.9.0

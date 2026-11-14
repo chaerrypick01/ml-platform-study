@@ -1,0 +1,11 @@
+{
+  "url": "https://github.com/ultralytics/assets/releases/download/v0.0.0/coco128.zip",
+  "archive_sha256": "61e5e3028863d8ffc3b81d6a514603954889f0edd5e4b44c4ce60b2da99aeb8e",
+  "seed": 42,
+  "counts": {
+    "train": 96,
+    "val": 16,
+    "test": 16
+  },
+  "cross_split_image_hash_overlap": 0
+}

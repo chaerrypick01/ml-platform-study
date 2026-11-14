@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: chapter9-data
+  namespace: kubeflow
+spec:
+  accessModes: [ReadWriteOnce]
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 3Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chapter9-tensorboard
+  namespace: kubeflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chapter9-tensorboard
+  template:
+    metadata:
+      labels:
+        app: chapter9-tensorboard
+    spec:
+      containers:
+        - name: tensorboard
+          image: localhost:5002/ch9-lab:v1
+          command: [tensorboard, --logdir, /shared, --host, 0.0.0.0, --port, '6006']
+          ports:
+            - containerPort: 6006
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 50m
+            limits:
+              memory: 512Mi
+              cpu: '1'
+          volumeMounts:
+            - name: data
+              mountPath: /shared
+              readOnly: true
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: chapter9-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chapter9-tensorboard
+  namespace: kubeflow
+spec:
+  selector:
+    app: chapter9-tensorboard
+  ports:
+    - port: 6006
+      targetPort: 6006

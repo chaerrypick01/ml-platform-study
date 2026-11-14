@@ -1,0 +1,24 @@
+{
+  "run_id": "6ff4dc1d20e144bd93b68b99227be45f",
+  "status": "FINISHED",
+  "metrics": {
+    "train/box_loss": 1.50114,
+    "train/cls_loss": 2.54465,
+    "train/dfl_loss": 1.36202,
+    "time/train_epoch_seconds": 32.383380181971006,
+    "metrics/precision_B": 0.640601850945574,
+    "metrics/recall_B": 0.6258220862011609,
+    "metrics/mAP50_B": 0.7048282677492129,
+    "metrics/mAP50-95_B": 0.5830049979128079,
+    "fitness": 0.5830049979128079,
+    "wall_seconds": 39.523370684997644
+  },
+  "params": {
+    "epochs": "1",
+    "device": "cpu",
+    "imgsz": "320",
+    "batch": "8",
+    "seed": "42",
+    "initial_weights": "yolov8n.pt"
+  }
+}

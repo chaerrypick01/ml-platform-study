@@ -1,0 +1,59 @@
+[
+  {
+    "mode": "artifacts",
+    "run_id": "a74a32fe-ee00-41ba-a5d0-03ff20afe042",
+    "state": "SUCCEEDED",
+    "parameters": {
+      "epochs": 1
+    },
+    "tasks": [
+      {
+        "name": "score-model",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "prepare-data",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "fit-model",
+        "state": "SUCCEEDED"
+      }
+    ]
+  },
+  {
+    "mode": "pvc",
+    "run_id": "71203c12-5e53-464b-84c8-b39731f9f90c",
+    "state": "SUCCEEDED",
+    "parameters": {
+      "epochs": 1,
+      "run_folder": "ch9-20261114T142720"
+    },
+    "tasks": [
+      {
+        "name": "inspect-pvc",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "train-pvc",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "stage-pvc",
+        "state": "SUCCEEDED"
+      }
+    ]
+  },
+  {
+    "mode": "movie",
+    "run_id": "31c1dc14-aa99-44c5-ab74-32ebc7c5369d",
+    "state": "SUCCEEDED",
+    "parameters": {},
+    "tasks": [
+      {
+        "name": "train-recommender",
+        "state": "SUCCEEDED"
+      }
+    ]
+  }
+]

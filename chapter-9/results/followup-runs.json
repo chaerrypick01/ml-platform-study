@@ -1,0 +1,111 @@
+[
+  {
+    "run_id": "be7bc159-b134-4fcf-b817-f345c0b486ca",
+    "state": "SUCCEEDED",
+    "tasks": [
+      {
+        "name": "inspect-movie-driver",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "root-driver",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "root",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "prepare-movie-driver",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "inspect-movie",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "chapter-7-movielens-data-preparation-kwz5q",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "prepare-movie",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "executor",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "executor",
+        "state": "SUCCEEDED"
+      }
+    ]
+  },
+  {
+    "run_id": "e717ba18-de00-402f-9637-5ae9dcfef52d",
+    "pvc_name": "ch9-lifecycle-20261114150934",
+    "state": "SUCCEEDED",
+    "tasks": [
+      {
+        "name": "write-file",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "manage-volume-2",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "read-file",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "manage-volume-driver",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "executor",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "root",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "executor",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "root-driver",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "write-file-driver",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "executor",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "executor",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "manage-volume-2-driver",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "chapter-9-pvc-lifecycle-rhvbb",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "read-file-driver",
+        "state": "SUCCEEDED"
+      },
+      {
+        "name": "manage-volume",
+        "state": "SUCCEEDED"
+      }
+    ]
+  }
+]
