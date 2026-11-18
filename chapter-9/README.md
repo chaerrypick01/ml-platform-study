@@ -2,6 +2,12 @@
 
 데이터를 Pod마다 다시 옮기는 비용과, 학습 결과를 나중에 재현·비교하는 문제를 다룬다. 이번 실습에서는 7~8장 파이프라인에 PVC·TensorBoard·MLflow를 연결하고, 영화 평점 예측도 작은 데이터로 실행한다.
 
+## 아키텍처
+
+![Chapter 9 — PVC 공유와 학습 추적](../diagrams/ch9-storage-tracking.png)
+
+[Excalidraw 원본](../diagrams/ch9-storage-tracking.excalidraw)
+
 ## 시작하기
 
 이 장의 환경과 실행 명령은 [RUNBOOK](RUNBOOK.md), 결과는 [RESULTS](RESULTS.md)에 정리했다. `chapter-9/.venv`와 `chapter-9/requirements.txt`를 사용한다.

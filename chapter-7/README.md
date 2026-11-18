@@ -3,6 +3,12 @@
 학습 전에 데이터를 확보하고, 검사하고, 품질 검사나 모델 학습 같은 후속 단계에 전달하는 방법을 다룬다.
 예를 들어 이 장의 MovieLens 실습에서는 준비 Pod가 만든 데이터셋을 별도 QA Pod에 전달해 결측·중복 등을 검사한다. COCO128 실습에서 준비한 이미지·라벨·분할 명세는 8장의 로컬 모델 학습에 입력으로 사용할 수 있다.
 
+## 아키텍처
+
+![Chapter 7 — 데이터 준비와 품질 검사](../diagrams/ch7-data-preparation.png)
+
+[Excalidraw 원본](../diagrams/ch7-data-preparation.excalidraw)
+
 ## 시작하기
 
 이 장의 환경과 실행 명령은 [RUNBOOK](RUNBOOK.md), 결과는 [RESULTS](RESULTS.md)에 정리했다. `chapter-7/.venv`와 `chapter-7/requirements.txt`를 사용한다.

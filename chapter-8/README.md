@@ -2,6 +2,12 @@
 
 준비한 데이터로 YOLO 모델을 학습하고, 가중치를 별도 검증 단계로 넘기는 과정을 다룬다. 이번 장에서는 작은 YOLOv8n 모델을 사용해 7장의 COCO128 분할을 이어받는다.
 
+## 아키텍처
+
+![Chapter 8 — 모델 학습과 검증](../diagrams/ch8-kfp-flow.png)
+
+[Excalidraw 원본](../diagrams/ch8-kfp-flow.excalidraw)
+
 ## 시작하기
 
 이 장의 환경과 실행 명령은 [RUNBOOK](RUNBOOK.md), 결과는 [RESULTS](RESULTS.md)에 정리했다. `chapter-8/.venv`와 `chapter-8/requirements.txt`를 사용한다.
