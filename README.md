@@ -19,13 +19,3 @@ ML 플랫폼 학습 노트와 로컬 실습 기록을 정리한 저장소다.
 실습은 Chapter 4에서 모델과 피처를 준비한 뒤, Chapter 5에서 이를 KFP 파이프라인으로 연결하는 순서로 진행한다. Chapter 6에서는 같은 모델과 로컬 클러스터를 사용해 서빙·자동 배포·드리프트 감지·롤백을 실습한다.
 
 Chapter 7~9에서는 기존 로컬 KFP를 재사용해 공개 객체 탐지 데이터의 준비·학습·검증을 연결하고, PVC·학습 추적과 Mac CPU/MPS 비교를 실습한다. 이전 장의 소득 분류 모델은 다시 학습하지 않는다.
-
-## 챕터별 실습 환경
-
-| 챕터 | 환경·의존성 | 실행 안내 | 주요 산출물 |
-|---|---|---|---|
-| 7 | `chapter-7/.venv`, 데이터 준비용 requirements | [RUNBOOK](chapter-7/RUNBOOK.md) | COCO128 분할·MovieLens Parquet·QA |
-| 8 | `chapter-8/.venv`, YOLO 학습용 requirements | [RUNBOOK](chapter-8/RUNBOOK.md) | 가중치·성능 비교·CPU/MPS 시간 |
-| 9 | `chapter-9/.venv`, PVC·추적용 requirements | [RUNBOOK](chapter-9/RUNBOOK.md) | PVC 검증·TensorBoard·MLflow 기록 |
-
-클러스터·레지스트리·MLflow 서버는 공용 인프라로 재사용한다. Python 환경·이미지·실행 진입점은 장별로 관리한다. 7장의 데이터 준비 함수와 8장의 학습 함수는 소스로 재사용하며, 다른 장의 가상환경을 실행하지 않는다.
