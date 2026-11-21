@@ -19,3 +19,23 @@ curl -i http://127.0.0.1:18857/users/50/recommendations
 ## 실습 결과
 
 측정값과 배운 점은 [실습 결과](RESULTS.md)에 정리했다.
+
+## 도전과제 · MLflow로 영화 추천 호출하기
+
+같은 추천 코드를 MLflow의 PythonModel로 감쌌다. 패키지에 체크포인트, 평점 데이터, 학습 메타데이터를 포함해 서버가 시작될 때 함께 읽도록 했다. 저장소 루트에서 실행한다. 모델 출력 경로는 처음 실행할 때 비어 있어야 한다.
+
+```sh
+source chapter-9/.venv/bin/activate
+export MLFLOW_TRACKING_URI="file://$PWD/chapter-9/outputs/mlruns"
+python chapter-10/package_model.py chapter-9/outputs/mlflow-recommendations
+python -m pip install --no-deps --target chapter-9/outputs/mlflow-serving-deps fastapi==0.115.12 starlette==0.46.2
+PYTHONPATH="$PWD/chapter-9/outputs/mlflow-serving-deps" mlflow models serve \
+  -m "$PWD/chapter-9/outputs/mlflow-recommendations" --env-manager local --host 127.0.0.1 --port 18858
+```
+
+MLflow 3.0.0의 추론 서버는 기존 환경의 FastAPI 0.162.7에서 시작할 때 `FastAPI.route` 오류가 났다. 위 명령은 호환 버전을 서버 프로세스에만 적용한다. 다른 터미널에서 호출한다.
+
+```sh
+curl -i http://127.0.0.1:18858/invocations -H 'Content-Type: application/json' \
+  -d '{"dataframe_records":[{"user_id":50}]}'
+```
