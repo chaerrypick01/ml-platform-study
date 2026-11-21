@@ -1,0 +1,15 @@
+{
+  "uid": "movie-recommendations",
+  "title": "영화 추천 요청",
+  "schemaVersion": 41,
+  "refresh": "5s",
+  "time": {"from": "now-15m", "to": "now"},
+  "panels": [{
+    "id": 1,
+    "title": "결과별 누적 요청 수",
+    "type": "timeseries",
+    "gridPos": {"x": 0, "y": 0, "w": 24, "h": 12},
+    "datasource": {"type": "prometheus", "uid": "ch11-prom"},
+    "targets": [{"refId": "A", "expr": "recommendation_requests_total{job=\"movie-recommendations\"}", "legendFormat": "{{outcome}}", "range": true}]
+  }]
+}

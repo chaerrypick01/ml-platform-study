@@ -1,0 +1,10 @@
+apiVersion: 1
+datasources:
+  - name: Chapter 11 Prometheus
+    type: prometheus
+    uid: ch11-prom
+    url: http://prometheus:9090
+    access: proxy
+    isDefault: true
+    jsonData:
+      timeInterval: 5s
