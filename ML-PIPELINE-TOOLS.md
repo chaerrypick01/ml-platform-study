@@ -2,6 +2,10 @@
 
 영화 추천 모델 하나도 학습할 때는 실행 순서와 평가 점수를 기록해야 하고, 배포한 뒤에는 사용자 요청에 응답하고 그 결과를 관찰해야 한다. 도구마다 관리하는 대상이 다르다. 아래 표는 각 도구의 역할을 이 저장소에서 실제로 다룬 범위와 연결한다.
 
+![스터디에서 사용한 도구별 ML 파이프라인 구간](diagrams/ml-pipeline-tools.png)
+
+[편집 가능한 Excalidraw 원본](diagrams/ml-pipeline-tools.excalidraw)
+
 | 도구 | 동작 범위와 관리 대상 | 특장점 | 스터디에서 확인한 예 |
 |---|---|---|---|
 | [Kubeflow Pipelines(KFP)](https://www.kubeflow.org/docs/components/pipelines/overview/) | 데이터 준비·학습·평가·배치 추론의 작업 순서와 입출력 | 컨테이너 작업을 의존 순서대로 실행하고, 어느 단계에서 어떤 산출물이 나왔는지 추적한다. Kubeflow 프로젝트 가운데 이 역할을 맡는 구성 요소가 KFP다. | [9장](chapter-9/RESULTS.md)에서 PVC를 공유하는 학습 작업과 영화 평점 학습 작업의 실행 상태를 확인했다. |
