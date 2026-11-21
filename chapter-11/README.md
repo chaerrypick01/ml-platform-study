@@ -35,3 +35,5 @@ python3 verify_monitoring.py
 ```
 
 실습을 마치면 이 디렉터리에서 `docker compose down`으로 모니터링 컨테이너를 종료할 수 있다.
+
+[도전과제 · ML 파이프라인 도구 비교](ML-PIPELINE-TOOLS.md)
