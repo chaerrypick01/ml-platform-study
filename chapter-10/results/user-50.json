@@ -1,0 +1,20 @@
+{
+  "user_id": 50,
+  "recommendations": [
+    {
+      "movie_id": 1197,
+      "title": "Princess Bride, The (1987)",
+      "predicted_rating": 3.948
+    },
+    {
+      "movie_id": 7153,
+      "title": "Lord of the Rings: The Return of the King, The (2003)",
+      "predicted_rating": 3.913
+    },
+    {
+      "movie_id": 2019,
+      "title": "Seven Samurai (Shichinin no samurai) (1954)",
+      "predicted_rating": 3.829
+    }
+  ]
+}

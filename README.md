@@ -15,6 +15,8 @@ ML 플랫폼 학습 노트와 로컬 실습 기록을 정리한 저장소다.
 | Chapter 7 | 공개 데이터 준비, 분할 QA, KFP 아티팩트 전달 | [학습 노트](chapter-7/README.md) · [아키텍처](chapter-7/README.md#아키텍처) |
 | Chapter 8 | YOLO 학습·검증, 체크포인트와 CPU/MPS 비교 | [학습 노트](chapter-8/README.md) · [아키텍처](chapter-8/README.md#아키텍처) |
 | Chapter 9 | PVC, TensorBoard, MLflow, 영화 평점 예측 | [학습 노트](chapter-9/README.md) · [아키텍처](chapter-9/README.md#아키텍처) · [실행 안내](chapter-9/RUNBOOK.md) |
+| Chapter 10 | MovieLens 모델 서빙과 추천 결과 대조 | [실습 안내와 결과](chapter-10/README.md) |
+| Chapter 11 | 미등록 사용자 응답과 추천 요청 지표 | [실습 안내와 결과](chapter-11/README.md) |
 
 실습은 Chapter 4에서 모델과 피처를 준비한 뒤, Chapter 5에서 이를 KFP 파이프라인으로 연결하는 순서로 진행한다. Chapter 6에서는 같은 모델과 로컬 클러스터를 사용해 서빙·자동 배포·드리프트 감지·롤백을 실습한다.
 

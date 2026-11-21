@@ -1,0 +1,17 @@
+{
+  "known_status": 200,
+  "unknown_status": 404,
+  "unknown_body": {
+    "detail": "unknown_user"
+  },
+  "before": [
+    "# TYPE recommendation_requests_total counter",
+    "recommendation_requests_total{outcome=\"ok\"} 0",
+    "recommendation_requests_total{outcome=\"unknown_user\"} 0"
+  ],
+  "after": [
+    "# TYPE recommendation_requests_total counter",
+    "recommendation_requests_total{outcome=\"ok\"} 1",
+    "recommendation_requests_total{outcome=\"unknown_user\"} 1"
+  ]
+}
